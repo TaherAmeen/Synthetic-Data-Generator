@@ -357,11 +357,3 @@ Generated reviews are saved as JSON with the following structure:
 ### Logs
 
 Generation logs are saved to `reports/last_run.log` for debugging.
-
-## License
-
-[Add your license here]
-
-## Contributing
-
-[Add contribution guidelines here]
