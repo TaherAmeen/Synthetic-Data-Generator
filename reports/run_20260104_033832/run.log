@@ -1,0 +1,180 @@
+Reports will be saved to: reports\run_20260104_033832
+Initializing Embedder...
+
+============================================================
+MODEL 1/2: openai/gpt-4o-mini
+============================================================
+
+Starting product research...
+Researching Easygenerator...
+  Searching: Easygenerator
+  Searching: Easygenerator reviews
+Research complete for Easygenerator.
+Generating 300 reviews using openai/gpt-4o-mini...
+[1/300] Generating review for Easygenerator by Managing Director (Rating: 4)
+DEBUG: Assigned 1/13 features: ['Cloud-Based Platform']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.0000, threshold=0.7, passed=True
+[2/300] Generating review for Easygenerator by Trainer (Rating: 1)
+DEBUG: Assigned 1/13 features: ['Assessment and Feedback Tools']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=2, actual=1, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.4089, threshold=0.7, passed=True
+[3/300] Generating review for Easygenerator by Learning Specialist (Rating: 5)
+DEBUG: Assigned 13/13 features: ['Assessment and Feedback Tools', 'Cloud-Based Platform', 'User-Friendly Interface', 'Performance Issues', 'Ease of Use', 'Customer Support', 'Integration Capabilities', 'Limited Advanced Features', 'Quality of Templates', 'Responsive Design', 'Templates and Themes', 'Collaboration Features', 'Pricing Concerns']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7132, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.6688, threshold=0.7, passed=True
+[4/300] Generating review for Easygenerator by Learning & Development Coordinator (Rating: 5)
+DEBUG: Assigned 4/13 features: ['Integration Capabilities', 'Customer Support', 'Quality of Templates', 'User-Friendly Interface']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7083, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7139, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7388, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.6831, threshold=0.7, passed=True
+[5/300] Generating review for Easygenerator by L&D Manager (Rating: 3)
+DEBUG: Assigned 5/13 features: ['Quality of Templates', 'Collaboration Features', 'Templates and Themes', 'Assessment and Feedback Tools', 'Customer Support']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=3, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7861, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7739, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=3, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.6930, threshold=0.7, passed=True
+[6/300] Generating review for Easygenerator by Corporate Trainer (Rating: 5)
+DEBUG: Assigned 1/13 features: ['Pricing Concerns']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.6230, threshold=0.7, passed=True
+[7/300] Generating review for Easygenerator by L&D Manager (Rating: 5)
+DEBUG: Assigned 9/13 features: ['Cloud-Based Platform', 'Assessment and Feedback Tools', 'Performance Issues', 'Collaboration Features', 'Ease of Use', 'Pricing Concerns', 'Limited Advanced Features', 'User-Friendly Interface', 'Templates and Themes']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7346, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7341, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.8077, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.7844, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.7672, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7341
+[8/300] Generating review for Easygenerator by Learning Specialist (Rating: 5)
+DEBUG: Assigned 7/13 features: ['Responsive Design', 'Quality of Templates', 'Templates and Themes', 'Customer Support', 'Pricing Concerns', 'Assessment and Feedback Tools', 'Ease of Use']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7925, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7736, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7196, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.8176, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.7831, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7196
+[9/300] Generating review for Easygenerator by Technical Trainer (Rating: 5)
+DEBUG: Assigned 4/13 features: ['Integration Capabilities', 'Quality of Templates', 'Limited Advanced Features', 'User-Friendly Interface']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.8165, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7964, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.8231, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.7401, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.7812, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7401
+[10/300] Generating review for Easygenerator by Instructional Designer (Rating: 3)
+DEBUG: Assigned 8/13 features: ['Performance Issues', 'Assessment and Feedback Tools', 'Pricing Concerns', 'Collaboration Features', 'Ease of Use', 'Limited Advanced Features', 'Templates and Themes', 'Cloud-Based Platform']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.8375, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=3, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7591, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7892, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.8434, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.7258, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7258
+[11/300] Generating review for Easygenerator by Instructional Designer (Rating: 5)
+DEBUG: Assigned 1/7 features: ['User-Friendly Interface']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.8025, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7815, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7528, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.7696, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.7763, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7528
+[12/300] Generating review for Easygenerator by HR Manager (Rating: 4)
+DEBUG: Assigned 3/13 features: ['Cloud-Based Platform', 'Ease of Use', 'Assessment and Feedback Tools']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7595, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7509, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7815, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.7726, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.7030, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7030
+[13/300] Generating review for Easygenerator by Technical Trainer (Rating: 2)
+DEBUG: Assigned 2/13 features: ['Templates and Themes', 'Responsive Design']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=3, actual=2, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7180, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=3, actual=2, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.8217, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=3, actual=2, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7926, threshold=0.7, passed=False

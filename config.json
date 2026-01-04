@@ -67,12 +67,18 @@
         "4": 0.3,
         "5": 0.3
     },
-    "models": [{
-        "provider": "openai",
-        "name": "gpt-4o-mini"
-    }],
-    "samples_number": 10,
-    "similarity_threshold": 0.7,
+    "models": [
+        {
+            "provider": "openai",
+            "name": "gpt-4o-mini"
+        },
+        {
+            "provider": "mistral",
+            "name": "mistral-small-latest"
+        }
+    ],
+    "samples_number": 300,
+    "similarity_threshold": 0.8,
     "options": {
         "pros_and_cons": true,
         "rating": true,

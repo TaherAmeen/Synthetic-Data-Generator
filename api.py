@@ -7,6 +7,9 @@ and managing the generation process.
 
 import json
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 import uuid
 from datetime import datetime
 from typing import Optional, List, Dict, Any

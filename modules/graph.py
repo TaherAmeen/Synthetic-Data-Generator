@@ -71,7 +71,8 @@ def get_llm(model_config: dict, temperature: float = 0.7, top_p: float = 1.0, fr
             model=model_name,
             temperature=temperature,
             top_p=top_p,
-            max_tokens=max_tokens
+            max_tokens=max_tokens,
+            timeout=120
         )
     else:
         raise ValueError(f"Unsupported provider: {provider}")

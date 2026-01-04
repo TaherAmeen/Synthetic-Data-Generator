@@ -5,6 +5,9 @@ import sys
 import time
 import argparse
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 try:
     from modules.graph import build_graph
     from modules.embedder import LocalEmbedder
@@ -15,7 +18,10 @@ try:
         save_report,
         load_real_reviews
     )
-except ImportError:
+except ImportError as e:
+    print(f"DEBUG: Import Error Details: {e}")
+    import traceback
+    traceback.print_exc()
     # Fallback to allow app to start even if dependencies aren't fully installed yet (during setup)
     build_graph = None
     LocalEmbedder = None
@@ -157,147 +163,150 @@ def run_generation(config: dict, reports_dir: str = None) -> dict:
                     product_research_map[product["name"]] = "Research failed."
         else:
             print("Skipping research phase (use_research=false)")
-            # ----------------------
+        
+        # ----------------------
+        # Review Generation Phase
+        # ----------------------
+        
+        # Store all embeddings for similarity check (reset per model)
+        all_embeddings = None
+        
+        results = []
+        
+        # Start performance tracking for this model
+        model_id = f"{model_config['provider']}/{model_config['name']}"
+        if performance_tracker:
+            performance_tracker.start_run(model_config)
+        
+        print(f"Generating {samples} reviews using {model_config['provider']}/{model_config['name']}...")
+        
+        for i in range(samples):
+            product = random.choice(products)
+            persona = random.choice(personas)
+            rating = select_rating(rating_dist)
             
-            # Store all embeddings for similarity check (reset per model)
-            all_embeddings = None
+            print(f"[{i+1}/{samples}] Generating review for {product['name']} by {persona['role']} (Rating: {rating})")
             
-            results = []
-            
-            # Start performance tracking for this model
-            model_id = f"{model_config['provider']}/{model_config['name']}"
-            if performance_tracker:
-                performance_tracker.start_run(model_config)
-            
-            print(f"Generating {samples} reviews using {model_config['provider']}/{model_config['name']}...")
-            
-            for i in range(samples):
-                product = random.choice(products)
-                persona = random.choice(personas)
-                rating = select_rating(rating_dist)
-                
-                print(f"[{i+1}/{samples}] Generatng review for {product['name']} by {persona['role']} (Rating: {rating})")
-                
-                initial_state = {
-                    "product": product,
-                    "persona": persona,
-                    "rating": rating,
-                    "options": options,
-                    "model_config": model_config,
-                    "generated_review": None,
-                    "previous_embeddings": all_embeddings,
-                    "embedder": embedder,
-                    "similarity_threshold": similarity_threshold,
-                    "feedback": None,
-                    "research_context": product_research_map.get(product["name"], "")
-                }
-                
-                # Track generation time
-                gen_start_time = time.time()
-                success = False
-                skipped = False
-                similarity_retries = 0
-                reality_retries = 0
-                sentiment_retries = 0
-                
-                try:
-                    # Recursion limit: scenario(1) + up to 5 attempts * 2 nodes each = 11 minimum
-                    # Set higher to be safe
-                    output_state = graph.invoke(initial_state, {"recursion_limit": 25})
-                    review_data = output_state["generated_review"]
-                    
-                    # Track retry counts from state
-                    similarity_retries = output_state.get("similarity_attempts", 0)
-                    reality_retries = output_state.get("reality_check_attempts", 0)
-                    sentiment_retries = output_state.get("sentiment_alignment_attempts", 0)
-                    skipped = output_state.get("review_skipped", False)
-                    
-                    # Update embeddings list
-                    comment = review_data.get("comment", "") if review_data else ""
-                    if comment:
-                        new_embedding = embedder.get_embeddings([comment])
-                        import torch
-                        if all_embeddings is None:
-                            all_embeddings = new_embedding
-                        else:
-                            import numpy as np
-                            all_embeddings = np.concatenate((all_embeddings, new_embedding), axis=0)
-
-                    # Enrich/Combine data for final output
-                    if review_data and not skipped:
-                        final_record = {
-                            "title": review_data.get("title"),
-                            "reviewer_role": persona["role"],
-                            "comment": review_data.get("comment"),
-                            "pros": review_data.get("pros"),
-                            "cons": review_data.get("cons"),
-                            "rating": review_data.get("rating", rating),
-                            "product_name": product["name"]
-                        }
-                        results.append(final_record)
-                        success = True
-                except Exception as e:
-                    print(f"Error generating review {i+1}: {e}")
-                
-                # Record performance metrics
-                gen_time = time.time() - gen_start_time
-                if performance_tracker:
-                    performance_tracker.record_generation(
-                        success=success,
-                        generation_time=gen_time,
-                        similarity_retries=similarity_retries,
-                        reality_check_retries=reality_retries,
-                        sentiment_retries=sentiment_retries,
-                        skipped=skipped
-                    )
-
-            # Create a safe model name for the filename
-            safe_model_name = model_config['name'].replace(':', '-').replace('/', '-')
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            output_file = os.path.join(OUTPUT_DIR, f"reviews_{safe_model_name}_{timestamp}.json")
-            
-            with open(output_file, "w") as f:
-                json.dump(results, f, indent=4)
-                
-            print(f"Done! Saved {len(results)} reviews to {output_file}")
-            
-            # End performance tracking and store results for this model
-            if performance_tracker:
-                run_summary = performance_tracker.end_run()
-                print(f"\n--- Performance Summary for {model_id} ---")
-                print(f"Success Rate: {run_summary.get('success_rate', 0):.1f}%")
-                print(f"Avg Generation Time: {run_summary.get('avg_generation_time', 0):.2f}s")
-                print(f"Reviews/Minute: {run_summary.get('reviews_per_minute', 0):.1f}")
-                print(f"Total Time: {run_summary.get('total_time_seconds', 0):.1f}s")
-            
-            # Store results for reporting
-            all_model_results[model_id] = {
-                "reviews": results,
-                "output_file": output_file
+            initial_state = {
+                "product": product,
+                "persona": persona,
+                "rating": rating,
+                "options": options,
+                "model_config": model_config,
+                "generated_review": None,
+                "previous_embeddings": all_embeddings,
+                "embedder": embedder,
+                "similarity_threshold": similarity_threshold,
+                "feedback": None,
+                "research_context": product_research_map.get(product["name"], "")
             }
+            
+            # Track generation time
+            gen_start_time = time.time()
+            success = False
+            skipped = False
+            similarity_retries = 0
+            reality_retries = 0
+            sentiment_retries = 0
+            
+            try:
+                # Recursion limit: scenario(1) + up to 5 attempts * 2 nodes each = 11 minimum
+                # Set higher to be safe
+                output_state = graph.invoke(initial_state, {"recursion_limit": 25})
+                review_data = output_state["generated_review"]
+                
+                # Track retry counts from state
+                similarity_retries = output_state.get("similarity_attempts", 0)
+                reality_retries = output_state.get("reality_check_attempts", 0)
+                sentiment_retries = output_state.get("sentiment_alignment_attempts", 0)
+                skipped = output_state.get("review_skipped", False)
+                
+                # Update embeddings list
+                comment = review_data.get("comment", "") if review_data else ""
+                if comment:
+                    new_embedding = embedder.get_embeddings([comment])
+                    import torch
+                    if all_embeddings is None:
+                        all_embeddings = new_embedding
+                    else:
+                        import numpy as np
+                        all_embeddings = np.concatenate((all_embeddings, new_embedding), axis=0)
+
+                # Enrich/Combine data for final output
+                if review_data and not skipped:
+                    final_record = {
+                        "title": review_data.get("title"),
+                        "reviewer_role": persona["role"],
+                        "comment": review_data.get("comment"),
+                        "pros": review_data.get("pros"),
+                        "cons": review_data.get("cons"),
+                        "rating": review_data.get("rating", rating),
+                        "product_name": product["name"]
+                    }
+                    results.append(final_record)
+                    success = True
+            except Exception as e:
+                print(f"Error generating review {i+1}: {e}")
+            
+            # Record performance metrics
+            gen_time = time.time() - gen_start_time
+            if performance_tracker:
+                performance_tracker.record_generation(
+                    success=success,
+                    generation_time=gen_time,
+                    similarity_retries=similarity_retries,
+                    reality_check_retries=reality_retries,
+                    sentiment_retries=sentiment_retries,
+                    skipped=skipped
+                )
+
+        # Create a safe model name for the filename
+        safe_model_name = model_config['name'].replace(':', '-').replace('/', '-')
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_file = os.path.join(OUTPUT_DIR, f"reviews_{safe_model_name}_{timestamp}.json")
         
-        # Generate comprehensive reports after all models have run
-        print(f"\n{'='*60}")
-        print("GENERATING QUALITY REPORTS")
-        print(f"{'='*60}\n")
+        with open(output_file, "w") as f:
+            json.dump(results, f, indent=4)
+            
+        print(f"Done! Saved {len(results)} reviews to {output_file}")
         
-        if generate_all_reports and performance_tracker:
-            for model_id, model_data in all_model_results.items():
-                print(f"Generating reports for {model_id}...")
-                try:
-                    saved_reports = generate_all_reports(
-                        synthetic_reviews=model_data["reviews"],
-                        real_reviews_path="data/real_reviews.json",
-                        performance_tracker=performance_tracker,
-                        embedder=embedder,
-                        model_name=model_id.replace("/", "-"),
-                        output_dir=reports_dir
-                    )
-                    print(f"Reports saved for {model_id}:")
-                    for report_type, path in saved_reports.items():
-                        print(f"  - {report_type}: {path}")
-                except Exception as e:
-                    print(f"Error generating reports for {model_id}: {e}")
+        # End performance tracking and store results for this model
+        if performance_tracker:
+            run_summary = performance_tracker.end_run()
+            print(f"\n--- Performance Summary for {model_id} ---")
+            print(f"Success Rate: {run_summary.get('success_rate', 0):.1f}%")
+            print(f"Avg Generation Time: {run_summary.get('avg_generation_time', 0):.2f}s")
+            print(f"Reviews/Minute: {run_summary.get('reviews_per_minute', 0):.1f}")
+            print(f"Total Time: {run_summary.get('total_time_seconds', 0):.1f}s")
+        
+        # Store results for reporting
+        all_model_results[model_id] = {
+            "reviews": results,
+            "output_file": output_file
+        }
+        
+    # Generate comprehensive reports after all models have run
+    print(f"\n{'='*60}")
+    print("GENERATING QUALITY REPORTS")
+    print(f"{'='*60}\n")
+    
+    if generate_all_reports and performance_tracker:
+        for model_id, model_data in all_model_results.items():
+            print(f"Generating reports for {model_id}...")
+            try:
+                saved_reports = generate_all_reports(
+                    synthetic_reviews=model_data["reviews"],
+                    real_reviews_path="data/real_reviews.json",
+                    performance_tracker=performance_tracker,
+                    embedder=embedder,
+                    model_name=model_id.replace("/", "-"),
+                    output_dir=reports_dir
+                )
+                print(f"Reports saved for {model_id}:")
+                for report_type, path in saved_reports.items():
+                    print(f"  - {report_type}: {path}")
+            except Exception as e:
+                print(f"Error generating reports for {model_id}: {e}")
     else:
         print("Reporting module not available - skipping report generation")
     

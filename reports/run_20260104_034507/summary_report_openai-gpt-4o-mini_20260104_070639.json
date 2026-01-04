@@ -1,0 +1,258 @@
+{
+  "report_type": "summary_report",
+  "generated_at": "2026-01-04T07:06:34.957350",
+  "model": "openai-gpt-4o-mini",
+  "overview": {
+    "synthetic_reviews_generated": 292,
+    "real_reviews_analyzed": 50
+  },
+  "quality_metrics": {
+    "text_quality": {
+      "length_stats": {
+        "mean": 110.52397260273973,
+        "std": 55.45165833061882,
+        "min": 47,
+        "max": 297,
+        "median": 81.0
+      },
+      "comment_length_stats": {
+        "mean": 83.27739726027397,
+        "std": 51.880148063481464,
+        "min": 28,
+        "max": 261,
+        "median": 57.0
+      },
+      "vocabulary_diversity": {
+        "type_token_ratio": 0.0384,
+        "unique_words": 1294,
+        "total_words": 33656
+      },
+      "readability": {
+        "flesch_mean": 16.8,
+        "flesch_std": 7.88,
+        "flesch_min": 0,
+        "flesch_max": 36.79
+      }
+    },
+    "distributions": {
+      "rating": {
+        "distribution": {
+          "1": {
+            "count": 26,
+            "percentage": 8.9
+          },
+          "2": {
+            "count": 33,
+            "percentage": 11.3
+          },
+          "3": {
+            "count": 49,
+            "percentage": 16.78
+          },
+          "4": {
+            "count": 90,
+            "percentage": 30.82
+          },
+          "5": {
+            "count": 94,
+            "percentage": 32.19
+          }
+        },
+        "mean": 3.66,
+        "std": 1.28,
+        "median": 4.0
+      },
+      "persona": {
+        "distribution": {
+          "CEO": {
+            "count": 22,
+            "percentage": 7.53
+          },
+          "Chief Compliance Officer": {
+            "count": 25,
+            "percentage": 8.56
+          },
+          "Corporate Trainer": {
+            "count": 19,
+            "percentage": 6.51
+          },
+          "HR Manager": {
+            "count": 13,
+            "percentage": 4.45
+          },
+          "Instructional Designer": {
+            "count": 18,
+            "percentage": 6.16
+          },
+          "L&D Manager": {
+            "count": 20,
+            "percentage": 6.85
+          },
+          "Learning & Development Coordinator": {
+            "count": 25,
+            "percentage": 8.56
+          },
+          "Learning Specialist": {
+            "count": 27,
+            "percentage": 9.25
+          },
+          "Managing Director": {
+            "count": 27,
+            "percentage": 9.25
+          },
+          "Product Trainer": {
+            "count": 29,
+            "percentage": 9.93
+          },
+          "Technical Trainer": {
+            "count": 21,
+            "percentage": 7.19
+          },
+          "Trainer": {
+            "count": 17,
+            "percentage": 5.82
+          },
+          "Training Specialist": {
+            "count": 29,
+            "percentage": 9.93
+          }
+        }
+      }
+    },
+    "diversity": {
+      "mean_pairwise_similarity": 0.6105,
+      "min_pairwise_similarity": 0.1542,
+      "max_pairwise_similarity": 0.9875,
+      "diversity_score": 0.3895
+    },
+    "summary": {
+      "diversity_score": 0.3895,
+      "avg_readability": 16.8,
+      "avg_review_length": 110.52397260273973,
+      "rating_variance": 1.28
+    }
+  },
+  "comparison_metrics": {
+    "text_length": {
+      "synthetic": {
+        "mean": 110.52397260273973,
+        "std": 55.45165833061882,
+        "min": 47,
+        "max": 297,
+        "median": 81.0
+      },
+      "real": {
+        "mean": 109.38,
+        "std": 68.85837349226308,
+        "min": 22,
+        "max": 310,
+        "median": 90.0
+      },
+      "difference": {
+        "absolute": 1.14,
+        "percentage": 1.05
+      }
+    },
+    "vocabulary": {
+      "synthetic": {
+        "type_token_ratio": 0.0384,
+        "unique_words": 1294,
+        "total_words": 33656
+      },
+      "real": {
+        "type_token_ratio": 0.2151,
+        "unique_words": 1186,
+        "total_words": 5514
+      }
+    },
+    "readability": {
+      "synthetic": {
+        "flesch_mean": 16.8,
+        "flesch_std": 7.88,
+        "flesch_min": 0,
+        "flesch_max": 36.79
+      },
+      "real": {
+        "flesch_mean": 53.44,
+        "flesch_std": 13.24,
+        "flesch_min": 16.93,
+        "flesch_max": 78.25
+      }
+    },
+    "rating_distribution": {
+      "synthetic": {
+        "distribution": {
+          "1": {
+            "count": 26,
+            "percentage": 8.9
+          },
+          "2": {
+            "count": 33,
+            "percentage": 11.3
+          },
+          "3": {
+            "count": 49,
+            "percentage": 16.78
+          },
+          "4": {
+            "count": 90,
+            "percentage": 30.82
+          },
+          "5": {
+            "count": 94,
+            "percentage": 32.19
+          }
+        },
+        "mean": 3.66,
+        "std": 1.28,
+        "median": 4.0
+      },
+      "real": {
+        "distribution": {
+          "4": {
+            "count": 11,
+            "percentage": 22.0
+          },
+          "5": {
+            "count": 39,
+            "percentage": 78.0
+          }
+        },
+        "mean": 4.78,
+        "std": 0.41,
+        "median": 5.0
+      },
+      "similarity": {
+        "kl_divergence": 9.2768,
+        "js_divergence": 0.181,
+        "js_similarity": 0.819
+      }
+    },
+    "semantic_similarity": {
+      "mean_similarity": 0.6022,
+      "max_similarity": 0.7447,
+      "min_similarity": 0.4236,
+      "std_similarity": 0.0544
+    },
+    "diversity": {
+      "synthetic": {
+        "mean_pairwise_similarity": 0.6105,
+        "min_pairwise_similarity": 0.1542,
+        "max_pairwise_similarity": 0.9875,
+        "diversity_score": 0.3895
+      },
+      "real": {
+        "mean_pairwise_similarity": 0.2994,
+        "min_pairwise_similarity": -0.045,
+        "max_pairwise_similarity": 0.7731,
+        "diversity_score": 0.7006
+      }
+    },
+    "overall_quality_score": 0.6581,
+    "quality_assessment": "Good - Synthetic reviews are of acceptable quality with minor differences from real reviews"
+  },
+  "recommendations": [
+    "Low diversity detected - Consider increasing temperature or adding more variation to prompts",
+    "Reviews may be too complex - Consider simplifying language in prompts"
+  ]
+}

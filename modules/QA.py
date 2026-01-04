@@ -8,9 +8,12 @@ This module provides quality checks for generated reviews:
 """
 
 from typing import Any, Optional
+from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
 from langchain_mistralai import ChatMistralAI
+
+load_dotenv()
 from modules.embedder import LocalEmbedder
 
 # Constants
@@ -58,7 +61,7 @@ def get_llm(model_config: dict, temperature: float = 0.3):
     elif provider == "ollama":
         return ChatOllama(model=model_name, temperature=temperature)
     elif provider == "mistral":
-        return ChatMistralAI(model=model_name, temperature=temperature)
+        return ChatMistralAI(model=model_name, temperature=temperature, timeout=120)
     else:
         raise ValueError(f"Unsupported provider: {provider}")
 
