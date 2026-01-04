@@ -1,16 +1,16 @@
 # Comparison Report
 
-**Generated:** 2026-01-04T07:06:42.130838
+**Generated:** 2026-01-04T23:52:56.608458
 **Model:** mistral-mistral-small-latest
 
 ## Comparison with Real Reviews
 
 ### Semantic Similarity
-- **Mean Similarity:** 0.5441
-- **Max Similarity:** 0.7129
-- **Min Similarity:** 0.3189
+- **Mean Similarity:** 0.5150
+- **Max Similarity:** 0.6626
+- **Min Similarity:** 0.3355
 
-### Overall Quality Score: **0.6908**
+### Overall Quality Score: **0.7217**
 *Good - Synthetic reviews are of acceptable quality with minor differences from real reviews*
 
 ---

@@ -1,17 +1,17 @@
 {
   "report_type": "comparison_report",
-  "generated_at": "2026-01-04T07:06:32.494460",
-  "model": "openai-gpt-4o-mini",
-  "synthetic_count": 292,
+  "generated_at": "2026-01-04T23:52:56.608458",
+  "model": "mistral-mistral-small-latest",
+  "synthetic_count": 217,
   "real_count": 50,
   "comparison": {
     "text_length": {
       "synthetic": {
-        "mean": 110.52397260273973,
-        "std": 55.45165833061882,
-        "min": 47,
-        "max": 297,
-        "median": 81.0
+        "mean": 191.2073732718894,
+        "std": 84.5575545873978,
+        "min": 51,
+        "max": 465,
+        "median": 191.0
       },
       "real": {
         "mean": 109.38,
@@ -21,15 +21,15 @@
         "median": 90.0
       },
       "difference": {
-        "absolute": 1.14,
-        "percentage": 1.05
+        "absolute": 81.83,
+        "percentage": 74.81
       }
     },
     "vocabulary": {
       "synthetic": {
-        "type_token_ratio": 0.0384,
-        "unique_words": 1294,
-        "total_words": 33656
+        "type_token_ratio": 0.0639,
+        "unique_words": 2745,
+        "total_words": 42945
       },
       "real": {
         "type_token_ratio": 0.2151,
@@ -39,10 +39,10 @@
     },
     "readability": {
       "synthetic": {
-        "flesch_mean": 16.8,
-        "flesch_std": 7.88,
+        "flesch_mean": 29.34,
+        "flesch_std": 14.86,
         "flesch_min": 0,
-        "flesch_max": 36.79
+        "flesch_max": 75.97
       },
       "real": {
         "flesch_mean": 53.44,
@@ -55,28 +55,28 @@
       "synthetic": {
         "distribution": {
           "1": {
-            "count": 26,
-            "percentage": 8.9
+            "count": 21,
+            "percentage": 9.68
           },
           "2": {
-            "count": 33,
-            "percentage": 11.3
+            "count": 23,
+            "percentage": 10.6
           },
           "3": {
-            "count": 49,
-            "percentage": 16.78
+            "count": 39,
+            "percentage": 17.97
           },
           "4": {
-            "count": 90,
-            "percentage": 30.82
+            "count": 71,
+            "percentage": 32.72
           },
           "5": {
-            "count": 94,
-            "percentage": 32.19
+            "count": 63,
+            "percentage": 29.03
           }
         },
-        "mean": 3.66,
-        "std": 1.28,
+        "mean": 3.61,
+        "std": 1.27,
         "median": 4.0
       },
       "real": {
@@ -95,23 +95,23 @@
         "median": 5.0
       },
       "similarity": {
-        "kl_divergence": 9.2768,
-        "js_divergence": 0.181,
-        "js_similarity": 0.819
+        "kl_divergence": 9.6394,
+        "js_divergence": 0.196,
+        "js_similarity": 0.804
       }
     },
     "semantic_similarity": {
-      "mean_similarity": 0.6022,
-      "max_similarity": 0.7447,
-      "min_similarity": 0.4236,
-      "std_similarity": 0.0544
+      "mean_similarity": 0.515,
+      "max_similarity": 0.6626,
+      "min_similarity": 0.3355,
+      "std_similarity": 0.0618
     },
     "diversity": {
       "synthetic": {
-        "mean_pairwise_similarity": 0.6105,
-        "min_pairwise_similarity": 0.1542,
-        "max_pairwise_similarity": 0.9875,
-        "diversity_score": 0.3895
+        "mean_pairwise_similarity": 0.5085,
+        "min_pairwise_similarity": 0.0543,
+        "max_pairwise_similarity": 0.8395,
+        "diversity_score": 0.4915
       },
       "real": {
         "mean_pairwise_similarity": 0.2994,
@@ -120,7 +120,7 @@
         "diversity_score": 0.7006
       }
     },
-    "overall_quality_score": 0.6581,
+    "overall_quality_score": 0.7217,
     "quality_assessment": "Good - Synthetic reviews are of acceptable quality with minor differences from real reviews"
   }
 }

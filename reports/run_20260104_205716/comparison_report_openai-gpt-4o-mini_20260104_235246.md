@@ -1,16 +1,16 @@
 # Comparison Report
 
-**Generated:** 2026-01-04T07:06:32.494460
+**Generated:** 2026-01-04T23:52:43.058846
 **Model:** openai-gpt-4o-mini
 
 ## Comparison with Real Reviews
 
 ### Semantic Similarity
-- **Mean Similarity:** 0.6022
-- **Max Similarity:** 0.7447
-- **Min Similarity:** 0.4236
+- **Mean Similarity:** 0.5488
+- **Max Similarity:** 0.7205
+- **Min Similarity:** 0.3628
 
-### Overall Quality Score: **0.6581**
+### Overall Quality Score: **0.6909**
 *Good - Synthetic reviews are of acceptable quality with minor differences from real reviews*
 
 ---

@@ -3,7 +3,22 @@
         {
             "name": "Easygenerator",
             "type": "E-learning platform",
-            "description": "Easygenerator is a cloud-based e-learning platform that allows users to create and deliver engaging online courses."
+            "description": "easygenerators free SaaS elearning authoring software makes it possible to create adaptive eLearning so you and your colleagues can create eLearning courses together. easygenerators collaborative features (roles, tasks, comments and more) will change how you work as a developer and with your team."
+        },
+        {
+            "name": "iSpring Suite",
+            "type": "E-learning platform",
+            "description": "iSpring Suite combines everything needed to create professional training content. Available both as a PowerPoint add-in and a cloud workspace, it offers an intuitive layout, flexible plans, and a full set of tools for designing modern courses, while making the process faster and more cost-effective."
+        },
+        {
+            "name": "Articulate 360",
+            "type": "E-learning platform",
+            "description": "Articulate 360 makes every aspect of e‑learning course development simpler, faster, and less expensive. Subscribe to Articulate 360 to get everything you need to complete your e‑learning projects, from start to finish."
+        },
+        {
+            "name": "Adobe Captivate",
+            "type": "E-learning platform",
+            "description": "Adobe Captivate is an author interactive eLearning and mLearning content. Easily create demos in HD, application simulations, and soft skills and compliance training."
         }
     ],
     "personas": [

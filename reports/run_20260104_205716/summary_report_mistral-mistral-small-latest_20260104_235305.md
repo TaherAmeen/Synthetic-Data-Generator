@@ -1,44 +1,45 @@
 # Summary Report
 
-**Generated:** 2026-01-04T07:06:44.984257
+**Generated:** 2026-01-04T23:52:59.645469
 **Model:** mistral-mistral-small-latest
 
 ## Overview
-- **Synthetic Reviews Generated:** 300
+- **Synthetic Reviews Generated:** 217
 - **Real Reviews Analyzed:** 50
 
 ## Quality Metrics
 
 ### Text Quality
-- **Average Length:** 131.7 words (std: 80.6)
-- **Length Range:** 41 - 485 words
-- **Type-Token Ratio:** 0.0348
-- **Unique Words:** 1446
-- **Flesch Reading Ease:** 20.4 (std: 9.4)
+- **Average Length:** 191.2 words (std: 84.6)
+- **Length Range:** 51 - 465 words
+- **Type-Token Ratio:** 0.0639
+- **Unique Words:** 2745
+- **Flesch Reading Ease:** 29.3 (std: 14.9)
 
 ### Diversity
-- **Diversity Score:** 0.4538
-- **Mean Pairwise Similarity:** 0.5462
+- **Diversity Score:** 0.4915
+- **Mean Pairwise Similarity:** 0.5085
 
 ### Distributions
 #### Rating Distribution
-- **Mean Rating:** 3.93
-- **Rating Std Dev:** 0.96
+- **Mean Rating:** 3.61
+- **Rating Std Dev:** 1.27
 | Rating | Count | Percentage |
 |--------|-------|------------|
-| 2 | 29 | 9.7% |
-| 3 | 63 | 21.0% |
-| 4 | 109 | 36.3% |
-| 5 | 99 | 33.0% |
+| 1 | 21 | 9.7% |
+| 2 | 23 | 10.6% |
+| 3 | 39 | 18.0% |
+| 4 | 71 | 32.7% |
+| 5 | 63 | 29.0% |
 
 ## Comparison with Real Reviews
 
 ### Semantic Similarity
-- **Mean Similarity:** 0.5441
-- **Max Similarity:** 0.7129
-- **Min Similarity:** 0.3189
+- **Mean Similarity:** 0.5150
+- **Max Similarity:** 0.6626
+- **Min Similarity:** 0.3355
 
-### Overall Quality Score: **0.6908**
+### Overall Quality Score: **0.7217**
 *Good - Synthetic reviews are of acceptable quality with minor differences from real reviews*
 
 ## Recommendations

@@ -33,6 +33,8 @@ class ReviewState(TypedDict):
     feedback: Optional[str]
     research_context: Optional[str]
     scenario: Optional[str]  # The usage scenario generated for the persona
+    # Feature shuffling for diversity
+    shuffled_features: Optional[List[str]]  # Pre-shuffled features passed between reviews
     # Retry tracking for similarity check
     similarity_attempts: int
     best_review: Optional[dict]  # Best (least similar) review so far
@@ -112,31 +114,58 @@ def generate_scenario_node(state: ReviewState):
     
     if not research_context or research_context == "No research available.":
         # No research available, skip scenario generation
-        return {"scenario": "General product usage."}
+        return {"scenario": "General product usage.", "shuffled_features": None}
     
-    # Extract features from research
-    features = extract_features_from_research(research_context, model_config)
+    # Use pre-shuffled features if available, otherwise extract and shuffle
+    shuffled_features = state.get("shuffled_features")
     
-    # Randomly select 1 to all features (weighted towards fewer features)
-    if features:
-        # Use weighted random to prefer fewer features but allow up to all
-        max_features = len(features)
+    if shuffled_features is None:
+        # First review: extract features and shuffle
+        features = extract_features_from_research(research_context, model_config)
+        if features:
+            shuffled_features = features.copy()
+            random.shuffle(shuffled_features)
+    else:
+        # Subsequent reviews: shuffle the already-shuffled list again
+        # This creates a progressive randomization pattern
+        shuffled_features = shuffled_features.copy()
+        random.shuffle(shuffled_features)
+    
+    # Select features from the shuffled list
+    if shuffled_features:
+        max_features = len(shuffled_features)
         # Weights decrease as number increases (1 feature most likely, all features least likely)
         weights = [1.0 / (i + 1) for i in range(max_features)]
         num_features = random.choices(range(1, max_features + 1), weights=weights)[0]
-        selected_features = random.sample(features, num_features)
+        
+        # Take the first N features from shuffled list (not random.sample)
+        # This ensures different starting points each time due to progressive shuffling
+        selected_features = shuffled_features[:num_features]
         assigned_features = "\n".join(f"- {f}" for f in selected_features)
-        all_features = "\n".join(f"- {f}" for f in features)
+        all_features = "\n".join(f"- {f}" for f in shuffled_features)
         print(f"DEBUG: Assigned {num_features}/{max_features} features: {selected_features}")
     else:
         assigned_features = "- General product features"
         all_features = "- General product features"
     
-    # Randomize parameters for variety
-    temperature = random.uniform(0.7, 1.0)
-    top_p = random.uniform(0.85, 1.0)
+    # Randomize parameters for variety - wider ranges
+    temperature = random.uniform(0.75, 1.1)
+    top_p = random.uniform(0.8, 1.0)
     
     llm = get_llm(model_config, temperature=temperature, top_p=top_p)
+    
+    # Add scenario context variations for more diverse scenarios
+    scenario_context_options = [
+        "Think about a challenging situation where you needed this product.",
+        "Think about your typical daily workflow with this product.",
+        "Think about a specific project where this product was essential.",
+        "Think about when you first started using this product.",
+        "Think about a time when this product saved you significant effort.",
+        "Think about how you use this product to collaborate with others.",
+        "Think about a recent success you achieved using this product.",
+        ""  # No additional context
+    ]
+    scenario_context = random.choice(scenario_context_options)
     
     scenario_prompt = get_scenario_prompt().format(
         role=state["persona"]["role"],
@@ -145,22 +174,28 @@ def generate_scenario_node(state: ReviewState):
         product_type=state["product"]["type"],
         research_context=research_context,
         assigned_features=assigned_features,
-        all_features=all_features
+        all_features=all_features,
+        rating=state["rating"]
     )
+    
+    # Append scenario context if present
+    if scenario_context:
+        scenario_prompt = scenario_prompt.replace("Scenario:", f"{scenario_context}\n\nScenario:")
     
     response = llm.invoke(scenario_prompt)
     scenario = response.content.strip()
     
-    return {"scenario": scenario}
+    # Return both scenario and the shuffled features for next review
+    return {"scenario": scenario, "shuffled_features": shuffled_features}
 
 def generate_review_node(state: ReviewState):
     model_config = state["model_config"]
     
-    # Randomize parameters
-    temperature = random.uniform(0.5, 0.9)
-    top_p = random.uniform(0.8, 1.0)
-    frequency_penalty = random.uniform(0.0, 0.5)
-    presence_penalty = random.uniform(0.0, 0.5)
+    # Randomize parameters with wider ranges for more diversity
+    temperature = random.uniform(0.6, 1.0)
+    top_p = random.uniform(0.75, 1.0)
+    frequency_penalty = random.uniform(0.0, 0.7)
+    presence_penalty = random.uniform(0.0, 0.7)
     # Generous max_tokens as safety net (prompt controls actual length)
     max_tokens = 600
     
@@ -174,9 +209,58 @@ def generate_review_node(state: ReviewState):
         "Write a short but helpful review (3-4 sentences).",
         "Write a moderately detailed review covering your main impressions.",
         "Write a detailed and thorough review of your experience.",
-        "Write a comprehensive review with specific examples from your usage."
+        "Write a comprehensive review with specific examples from your usage.",
+        "Write a concise review focusing on the most important point.",
+        "Write a review that tells a story about your experience."
     ]
     length_instruction = random.choice(length_options)
+    
+    # Add writing style variations for diversity
+    style_options = [
+        "Write in a straightforward, matter-of-fact tone.",
+        "Write in an enthusiastic and energetic tone.",
+        "Write in a thoughtful, analytical tone.",
+        "Write in a casual, conversational tone as if talking to a friend.",
+        "Write in a professional, formal tone.",
+        "Write with a focus on practical, hands-on insights.",
+        "Write with emotional emphasis on how the product made you feel.",
+        "Write in a balanced, objective tone weighing pros and cons.",
+        "Write as someone sharing a tip with colleagues.",
+        "Write with subtle humor or wit where appropriate."
+    ]
+    style_instruction = random.choice(style_options)
+    
+    # Add focus area variations
+    focus_options = [
+        "Focus primarily on the features you used most.",
+        "Focus on how this product compares to your expectations.",
+        "Focus on the learning curve and ease of getting started.",
+        "Focus on the day-to-day workflow improvements.",
+        "Focus on specific outcomes or results you achieved.",
+        "Focus on who would benefit most from this product.",
+        "Focus on the value for money aspect.",
+        "Focus on the support and documentation quality.",
+        ""  # No specific focus - natural review
+    ]
+    focus_instruction = random.choice(focus_options)
+    
+    # Add experience timeframe variations
+    timeframe_options = [
+        "You've been using this product for just a few weeks.",
+        "You've been using this product for several months.",
+        "You've been using this product for over a year.",
+        "You recently started using this product.",
+        "You've been a long-time user of this product.",
+        ""  # No specific timeframe
+    ]
+    timeframe_instruction = random.choice(timeframe_options)
+    
+    # Combine all diversity instructions
+    combined_instructions = f"{length_instruction} {style_instruction}"
+    if focus_instruction:
+        combined_instructions += f" {focus_instruction}"
+    if timeframe_instruction:
+        combined_instructions += f" {timeframe_instruction}"
     
     # Fill in the prompt details
     chain = prompt | llm | JsonOutputParser()
@@ -190,7 +274,7 @@ def generate_review_node(state: ReviewState):
         "rating": state["rating"],
         "research_context": state.get("research_context", "No research available."),
         "scenario": state.get("scenario", "General product usage."),
-        "length_instruction": length_instruction
+        "length_instruction": combined_instructions
     }
     
     if state.get("feedback"):

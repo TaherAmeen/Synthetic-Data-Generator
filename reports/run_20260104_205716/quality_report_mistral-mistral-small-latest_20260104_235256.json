@@ -1,0 +1,132 @@
+{
+  "report_type": "quality_report",
+  "generated_at": "2026-01-04T23:52:53.881062",
+  "model": "mistral-mistral-small-latest",
+  "total_reviews": 217,
+  "metrics": {
+    "text_quality": {
+      "length_stats": {
+        "mean": 191.2073732718894,
+        "std": 84.5575545873978,
+        "min": 51,
+        "max": 465,
+        "median": 191.0
+      },
+      "comment_length_stats": {
+        "mean": 147.64055299539172,
+        "std": 76.79423590881429,
+        "min": 28,
+        "max": 417,
+        "median": 148.0
+      },
+      "vocabulary_diversity": {
+        "type_token_ratio": 0.0639,
+        "unique_words": 2745,
+        "total_words": 42945
+      },
+      "readability": {
+        "flesch_mean": 29.34,
+        "flesch_std": 14.86,
+        "flesch_min": 0,
+        "flesch_max": 75.97
+      }
+    },
+    "distributions": {
+      "rating": {
+        "distribution": {
+          "1": {
+            "count": 21,
+            "percentage": 9.68
+          },
+          "2": {
+            "count": 23,
+            "percentage": 10.6
+          },
+          "3": {
+            "count": 39,
+            "percentage": 17.97
+          },
+          "4": {
+            "count": 71,
+            "percentage": 32.72
+          },
+          "5": {
+            "count": 63,
+            "percentage": 29.03
+          }
+        },
+        "mean": 3.61,
+        "std": 1.27,
+        "median": 4.0
+      },
+      "persona": {
+        "distribution": {
+          "CEO": {
+            "count": 14,
+            "percentage": 6.45
+          },
+          "Chief Compliance Officer": {
+            "count": 19,
+            "percentage": 8.76
+          },
+          "Corporate Trainer": {
+            "count": 13,
+            "percentage": 5.99
+          },
+          "HR Manager": {
+            "count": 18,
+            "percentage": 8.29
+          },
+          "Instructional Designer": {
+            "count": 18,
+            "percentage": 8.29
+          },
+          "L&D Manager": {
+            "count": 12,
+            "percentage": 5.53
+          },
+          "Learning & Development Coordinator": {
+            "count": 15,
+            "percentage": 6.91
+          },
+          "Learning Specialist": {
+            "count": 24,
+            "percentage": 11.06
+          },
+          "Managing Director": {
+            "count": 17,
+            "percentage": 7.83
+          },
+          "Product Trainer": {
+            "count": 23,
+            "percentage": 10.6
+          },
+          "Technical Trainer": {
+            "count": 14,
+            "percentage": 6.45
+          },
+          "Trainer": {
+            "count": 14,
+            "percentage": 6.45
+          },
+          "Training Specialist": {
+            "count": 16,
+            "percentage": 7.37
+          }
+        }
+      }
+    },
+    "diversity": {
+      "mean_pairwise_similarity": 0.5085,
+      "min_pairwise_similarity": 0.0543,
+      "max_pairwise_similarity": 0.8395,
+      "diversity_score": 0.4915
+    },
+    "summary": {
+      "diversity_score": 0.4915,
+      "avg_readability": 29.34,
+      "avg_review_length": 191.2073732718894,
+      "rating_variance": 1.27
+    }
+  }
+}

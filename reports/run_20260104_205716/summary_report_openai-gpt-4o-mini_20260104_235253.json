@@ -1,145 +1,145 @@
 {
   "report_type": "summary_report",
-  "generated_at": "2026-01-04T07:06:34.957350",
+  "generated_at": "2026-01-04T23:52:46.800178",
   "model": "openai-gpt-4o-mini",
   "overview": {
-    "synthetic_reviews_generated": 292,
+    "synthetic_reviews_generated": 278,
     "real_reviews_analyzed": 50
   },
   "quality_metrics": {
     "text_quality": {
       "length_stats": {
-        "mean": 110.52397260273973,
-        "std": 55.45165833061882,
-        "min": 47,
-        "max": 297,
-        "median": 81.0
+        "mean": 189.9928057553957,
+        "std": 89.15494526266957,
+        "min": 49,
+        "max": 467,
+        "median": 186.0
       },
       "comment_length_stats": {
-        "mean": 83.27739726027397,
-        "std": 51.880148063481464,
-        "min": 28,
-        "max": 261,
-        "median": 57.0
+        "mean": 157.97841726618705,
+        "std": 86.22394029217953,
+        "min": 33,
+        "max": 436,
+        "median": 149.5
       },
       "vocabulary_diversity": {
-        "type_token_ratio": 0.0384,
-        "unique_words": 1294,
-        "total_words": 33656
+        "type_token_ratio": 0.0653,
+        "unique_words": 3529,
+        "total_words": 54016
       },
       "readability": {
-        "flesch_mean": 16.8,
-        "flesch_std": 7.88,
+        "flesch_mean": 19.8,
+        "flesch_std": 14.2,
         "flesch_min": 0,
-        "flesch_max": 36.79
+        "flesch_max": 57.49
       }
     },
     "distributions": {
       "rating": {
         "distribution": {
           "1": {
-            "count": 26,
-            "percentage": 8.9
+            "count": 17,
+            "percentage": 6.12
           },
           "2": {
-            "count": 33,
-            "percentage": 11.3
+            "count": 13,
+            "percentage": 4.68
           },
           "3": {
-            "count": 49,
-            "percentage": 16.78
+            "count": 57,
+            "percentage": 20.5
           },
           "4": {
-            "count": 90,
-            "percentage": 30.82
+            "count": 94,
+            "percentage": 33.81
           },
           "5": {
-            "count": 94,
-            "percentage": 32.19
+            "count": 97,
+            "percentage": 34.89
           }
         },
-        "mean": 3.66,
-        "std": 1.28,
+        "mean": 3.87,
+        "std": 1.13,
         "median": 4.0
       },
       "persona": {
         "distribution": {
           "CEO": {
-            "count": 22,
-            "percentage": 7.53
+            "count": 20,
+            "percentage": 7.19
           },
           "Chief Compliance Officer": {
-            "count": 25,
-            "percentage": 8.56
+            "count": 23,
+            "percentage": 8.27
           },
           "Corporate Trainer": {
-            "count": 19,
-            "percentage": 6.51
+            "count": 21,
+            "percentage": 7.55
           },
           "HR Manager": {
-            "count": 13,
-            "percentage": 4.45
+            "count": 26,
+            "percentage": 9.35
           },
           "Instructional Designer": {
-            "count": 18,
-            "percentage": 6.16
+            "count": 12,
+            "percentage": 4.32
           },
           "L&D Manager": {
-            "count": 20,
-            "percentage": 6.85
+            "count": 25,
+            "percentage": 8.99
           },
           "Learning & Development Coordinator": {
-            "count": 25,
-            "percentage": 8.56
+            "count": 23,
+            "percentage": 8.27
           },
           "Learning Specialist": {
-            "count": 27,
-            "percentage": 9.25
+            "count": 22,
+            "percentage": 7.91
           },
           "Managing Director": {
-            "count": 27,
-            "percentage": 9.25
+            "count": 21,
+            "percentage": 7.55
           },
           "Product Trainer": {
-            "count": 29,
-            "percentage": 9.93
+            "count": 18,
+            "percentage": 6.47
           },
           "Technical Trainer": {
-            "count": 21,
+            "count": 20,
             "percentage": 7.19
           },
           "Trainer": {
-            "count": 17,
-            "percentage": 5.82
+            "count": 25,
+            "percentage": 8.99
           },
           "Training Specialist": {
-            "count": 29,
-            "percentage": 9.93
+            "count": 22,
+            "percentage": 7.91
           }
         }
       }
     },
     "diversity": {
-      "mean_pairwise_similarity": 0.6105,
-      "min_pairwise_similarity": 0.1542,
-      "max_pairwise_similarity": 0.9875,
-      "diversity_score": 0.3895
+      "mean_pairwise_similarity": 0.5432,
+      "min_pairwise_similarity": 0.1222,
+      "max_pairwise_similarity": 0.8481,
+      "diversity_score": 0.4568
     },
     "summary": {
-      "diversity_score": 0.3895,
-      "avg_readability": 16.8,
-      "avg_review_length": 110.52397260273973,
-      "rating_variance": 1.28
+      "diversity_score": 0.4568,
+      "avg_readability": 19.8,
+      "avg_review_length": 189.9928057553957,
+      "rating_variance": 1.13
     }
   },
   "comparison_metrics": {
     "text_length": {
       "synthetic": {
-        "mean": 110.52397260273973,
-        "std": 55.45165833061882,
-        "min": 47,
-        "max": 297,
-        "median": 81.0
+        "mean": 189.9928057553957,
+        "std": 89.15494526266957,
+        "min": 49,
+        "max": 467,
+        "median": 186.0
       },
       "real": {
         "mean": 109.38,
@@ -149,15 +149,15 @@
         "median": 90.0
       },
       "difference": {
-        "absolute": 1.14,
-        "percentage": 1.05
+        "absolute": 80.61,
+        "percentage": 73.7
       }
     },
     "vocabulary": {
       "synthetic": {
-        "type_token_ratio": 0.0384,
-        "unique_words": 1294,
-        "total_words": 33656
+        "type_token_ratio": 0.0653,
+        "unique_words": 3529,
+        "total_words": 54016
       },
       "real": {
         "type_token_ratio": 0.2151,
@@ -167,10 +167,10 @@
     },
     "readability": {
       "synthetic": {
-        "flesch_mean": 16.8,
-        "flesch_std": 7.88,
+        "flesch_mean": 19.8,
+        "flesch_std": 14.2,
         "flesch_min": 0,
-        "flesch_max": 36.79
+        "flesch_max": 57.49
       },
       "real": {
         "flesch_mean": 53.44,
@@ -183,28 +183,28 @@
       "synthetic": {
         "distribution": {
           "1": {
-            "count": 26,
-            "percentage": 8.9
+            "count": 17,
+            "percentage": 6.12
           },
           "2": {
-            "count": 33,
-            "percentage": 11.3
+            "count": 13,
+            "percentage": 4.68
           },
           "3": {
-            "count": 49,
-            "percentage": 16.78
+            "count": 57,
+            "percentage": 20.5
           },
           "4": {
-            "count": 90,
-            "percentage": 30.82
+            "count": 94,
+            "percentage": 33.81
           },
           "5": {
-            "count": 94,
-            "percentage": 32.19
+            "count": 97,
+            "percentage": 34.89
           }
         },
-        "mean": 3.66,
-        "std": 1.28,
+        "mean": 3.87,
+        "std": 1.13,
         "median": 4.0
       },
       "real": {
@@ -223,23 +223,23 @@
         "median": 5.0
       },
       "similarity": {
-        "kl_divergence": 9.2768,
-        "js_divergence": 0.181,
-        "js_similarity": 0.819
+        "kl_divergence": 7.874,
+        "js_divergence": 0.157,
+        "js_similarity": 0.843
       }
     },
     "semantic_similarity": {
-      "mean_similarity": 0.6022,
-      "max_similarity": 0.7447,
-      "min_similarity": 0.4236,
-      "std_similarity": 0.0544
+      "mean_similarity": 0.5488,
+      "max_similarity": 0.7205,
+      "min_similarity": 0.3628,
+      "std_similarity": 0.0538
     },
     "diversity": {
       "synthetic": {
-        "mean_pairwise_similarity": 0.6105,
-        "min_pairwise_similarity": 0.1542,
-        "max_pairwise_similarity": 0.9875,
-        "diversity_score": 0.3895
+        "mean_pairwise_similarity": 0.5432,
+        "min_pairwise_similarity": 0.1222,
+        "max_pairwise_similarity": 0.8481,
+        "diversity_score": 0.4568
       },
       "real": {
         "mean_pairwise_similarity": 0.2994,
@@ -248,7 +248,7 @@
         "diversity_score": 0.7006
       }
     },
-    "overall_quality_score": 0.6581,
+    "overall_quality_score": 0.6909,
     "quality_assessment": "Good - Synthetic reviews are of acceptable quality with minor differences from real reviews"
   },
   "recommendations": [

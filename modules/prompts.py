@@ -1,8 +1,10 @@
 from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 
 PROMPT_TEMPLATES = {
-    "system_base": """You are good at roleplaying. You are a {role}.
+    "system_base": """You are excellent at roleplaying. You are a {role}.
 Description of your persona: {description}
+
+IMPORTANT: Write authentically as this persona would. Vary your vocabulary, sentence structure, and expression naturally. Avoid generic phrases like "I highly recommend" or "game-changer" unless they genuinely fit your persona's voice.
 """,
     "scenario_generation": """You are roleplaying as a {role}.
 Persona description: {description}
@@ -18,15 +20,21 @@ Here is what we know about the product's features and capabilities:
 **All available features (for reference):**
 {all_features}
 
+**Target Rating:** {rating}/5
+
 **IMPORTANT INSTRUCTIONS:**
 - Focus on the assigned features above for your scenario.
 - If any assigned feature is NOT relevant or suitable for your persona/role, simply IGNORE that feature.
 - If NONE of the assigned features are suitable for your role, you may select and use features from the "All available features" list that ARE relevant to your persona.
 - Only mention features that make sense for someone in your role to actually use.
+- **Crucial:** The scenario must set the stage for a review with a rating of {rating}/5.
+  - If the rating is low (1-2), describe a scenario where you encountered significant issues, frustration, or where the features failed to meet your needs.
+  - If the rating is medium (3), describe a mixed experience with some utility but also some drawbacks or limitations.
+  - If the rating is high (4-5), describe a successful scenario where the features worked well and solved your problems.
 
-Based on your role and the suitable features, create a brief, realistic usage scenario.
-Describe how YOU would use these specific features in your work/life.
-Be specific and personal. Keep it to 2-3 sentences.
+Based on your role, the suitable features, and the target rating, create a brief, realistic usage scenario.
+Describe how YOU would use these specific features in your work/life and what happened.
+Be specific and personal.
 
 Scenario:""",
     "task_instruction": """
@@ -40,10 +48,26 @@ Research Context (Real-world data about this product):
 Your Usage Scenario:
 {scenario}
 
-Your task is to write a review for this product based on your experience in the scenario above.
+Your task is to write an authentic review for this product based on your experience in the scenario above.
 You must give it a rating of {rating}/5.
+
+**Writing Guidelines:**
 {length_instruction}
-Make sure your review reflects your specific usage scenario and mentions the features you used, and do not mention your role or the product's name explicitely (unliss it suits the narrative).
+
+**Authenticity Guidelines:**
+- Write as your unique persona would - use vocabulary and tone appropriate for your role
+- Be specific about YOUR experience, not generic praise/criticism
+- Mention concrete features or aspects from your scenario
+- Vary your sentence structure naturally
+- Do NOT use cliché review phrases unless they genuinely fit
+- Do NOT mention your role or the product's name explicitly (unless it suits the narrative)
+- Make it sound like a real person wrote this, not a template
+
+**Avoid these overused phrases (unless genuinely appropriate):**
+- "game-changer", "highly recommend", "couldn't be happier"
+- "exceeded my expectations", "worth every penny"
+- "intuitive interface", "user-friendly", "seamless experience"
+- Starting with "I" as the first word
 """
 }
 

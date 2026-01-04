@@ -4,6 +4,7 @@ import os
 import sys
 import time
 import argparse
+import re
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -31,6 +32,7 @@ except ImportError as e:
 DEFAULT_CONFIG_PATH = "config.json"
 OUTPUT_DIR = "data/output"
 REPORTS_DIR = "reports"
+RESEARCH_DIR = "data/research"
 
 def create_run_folder() -> str:
     """Create a timestamped folder for this run's reports."""
@@ -91,6 +93,67 @@ def select_rating(distribution: dict):
     weights = [distribution[r] for r in ratings]
     return int(random.choices(ratings, weights=weights, k=1)[0])
 
+def sanitize_filename(name: str) -> str:
+    return re.sub(r'[<>:"/\\|?*]', '_', name)
+
+def run_product_research(config: dict):
+    """
+    Run research for all products using the first available model.
+    Saves reports to data/research.
+    """
+    if not config.get("options", {}).get("use_research", False):
+        print("Skipping research phase (use_research=false)")
+        return
+
+    print("\n" + "="*60)
+    print("STARTING PRODUCT RESEARCH PHASE")
+    print("="*60 + "\n")
+
+    os.makedirs(RESEARCH_DIR, exist_ok=True)
+    
+    # Use the first model for research
+    if not config["models"]:
+        print("No models configured, cannot perform research.")
+        return
+        
+    research_model = config["models"][0]
+    print(f"Using model for research: {research_model['provider']}/{research_model['name']}")
+
+    try:
+        from modules.research import build_research_graph
+        research_graph = build_research_graph()
+    except ImportError:
+        print("Could not import research module. Skipping.")
+        return
+
+    products = config["products"]
+    # Deduplicate products by name
+    unique_products = {p["name"]: p for p in products}.values()
+
+    for product in unique_products:
+        product_name = product["name"]
+        safe_name = sanitize_filename(product_name)
+        file_path = os.path.join(RESEARCH_DIR, f"{safe_name}.md")
+        
+        print(f"Researching {product_name}...")
+        try:
+            research_res = research_graph.invoke({
+                "product_name": product_name,
+                "model_config": research_model,
+                "messages": []
+            })
+            report = research_res.get("final_report", "No report generated.")
+            
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(report)
+                
+            print(f"Saved research to {file_path}")
+            
+        except Exception as e:
+            print(f"Research failed for {product_name}: {e}")
+
+    print("\nResearch phase complete.\n")
+
 def run_generation(config: dict, reports_dir: str = None) -> dict:
     """
     Run the synthetic review generation process.
@@ -125,6 +188,19 @@ def run_generation(config: dict, reports_dir: str = None) -> dict:
     embedder = LocalEmbedder()
     graph = build_graph()
     
+    # Run research phase first
+    run_product_research(config)
+    
+    # Load research data
+    product_research_map = {}
+    if options.get("use_research", False):
+        for product in products:
+            safe_name = sanitize_filename(product["name"])
+            file_path = os.path.join(RESEARCH_DIR, f"{safe_name}.md")
+            if os.path.exists(file_path):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    product_research_map[product["name"]] = f.read()
+
     # Initialize performance tracker for all models
     performance_tracker = ModelPerformanceTracker() if ModelPerformanceTracker else None
     all_model_results = {}  # Store results per model for reporting
@@ -134,35 +210,6 @@ def run_generation(config: dict, reports_dir: str = None) -> dict:
         print(f"\n{'='*60}")
         print(f"MODEL {model_idx + 1}/{len(models)}: {model_config['provider']}/{model_config['name']}")
         print(f"{'='*60}\n")
-        
-        # --- Research Phase (per model) ---
-        product_research_map = {}
-        use_research = options.get("use_research", False)
-        
-        if use_research:
-            print("Starting product research...")
-            from modules.research import build_research_graph
-            research_graph = build_research_graph()
-            # Deduplicate products by name just in case
-            unique_products = {p["name"]: p for p in products}.values()
-            
-            for product in unique_products:
-                print(f"Researching {product['name']}...")
-                try:
-                    # Invoke the research graph
-                    research_res = research_graph.invoke({
-                        "product_name": product["name"],
-                        "model_config": model_config,
-                        "messages": []
-                    })
-                    report = research_res.get("final_report", "No report generated.")
-                    product_research_map[product["name"]] = report
-                    print(f"Research complete for {product['name']}.")
-                except Exception as e:
-                    print(f"Research failed for {product['name']}: {e}")
-                    product_research_map[product["name"]] = "Research failed."
-        else:
-            print("Skipping research phase (use_research=false)")
         
         # ----------------------
         # Review Generation Phase
@@ -180,12 +227,18 @@ def run_generation(config: dict, reports_dir: str = None) -> dict:
         
         print(f"Generating {samples} reviews using {model_config['provider']}/{model_config['name']}...")
         
+        # Track shuffled features per product for progressive shuffling across reviews
+        product_shuffled_features = {}  # product_name -> shuffled_features list
+        
         for i in range(samples):
             product = random.choice(products)
             persona = random.choice(personas)
             rating = select_rating(rating_dist)
             
             print(f"[{i+1}/{samples}] Generating review for {product['name']} by {persona['role']} (Rating: {rating})")
+            
+            # Get previously shuffled features for this product (if any)
+            current_shuffled_features = product_shuffled_features.get(product["name"])
             
             initial_state = {
                 "product": product,
@@ -198,7 +251,8 @@ def run_generation(config: dict, reports_dir: str = None) -> dict:
                 "embedder": embedder,
                 "similarity_threshold": similarity_threshold,
                 "feedback": None,
-                "research_context": product_research_map.get(product["name"], "")
+                "research_context": product_research_map.get(product["name"], ""),
+                "shuffled_features": current_shuffled_features
             }
             
             # Track generation time
@@ -214,6 +268,10 @@ def run_generation(config: dict, reports_dir: str = None) -> dict:
                 # Set higher to be safe
                 output_state = graph.invoke(initial_state, {"recursion_limit": 25})
                 review_data = output_state["generated_review"]
+                
+                # Update shuffled features for this product (progressive shuffling)
+                if output_state.get("shuffled_features"):
+                    product_shuffled_features[product["name"]] = output_state["shuffled_features"]
                 
                 # Track retry counts from state
                 similarity_retries = output_state.get("similarity_attempts", 0)
