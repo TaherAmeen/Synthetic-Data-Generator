@@ -1,0 +1,10 @@
+langchain
+langchain-openai
+langchain-ollama
+langchain-mistralai
+langgraph
+pydantic
+python-dotenv
+sentence-transformers
+fastapi
+uvicorn[standard]

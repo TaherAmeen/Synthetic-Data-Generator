@@ -1,0 +1,139 @@
+Initializing Embedder...
+
+============================================================
+MODEL 1/1: openai/gpt-4o-mini
+============================================================
+
+Starting product research...
+Researching Easygenerator...
+  Searching: Easygenerator
+  Searching: Easygenerator reviews
+Research complete for Easygenerator.
+Generating 10 reviews using openai/gpt-4o-mini...
+[1/10] Generatng review for Easygenerator by Managing Director (Rating: 5)
+DEBUG: Assigned 1/13 features: ['Robust Customer Use Cases']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.0000, threshold=0.7, passed=True
+[2/10] Generatng review for Easygenerator by Instructional Designer (Rating: 4)
+DEBUG: Assigned 2/13 features: ['Outline Builder', 'EasyAI']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.6429, threshold=0.7, passed=True
+[3/10] Generatng review for Easygenerator by Managing Director (Rating: 4)
+DEBUG: Assigned 1/13 features: ['Text-to-speech']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.6491, threshold=0.7, passed=True
+[4/10] Generatng review for Easygenerator by Instructional Designer (Rating: 4)
+DEBUG: Assigned 2/13 features: ['Instant Localization', 'Collaboration Features']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=4, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.6931, threshold=0.7, passed=True
+[5/10] Generatng review for Easygenerator by CEO (Rating: 1)
+DEBUG: Assigned 10/13 features: ['Robust Customer Use Cases', 'Collaboration Features', 'EasyAI', 'User-Friendly Authoring Tool', 'Extensive Support', 'Integration Capabilities', 'Text-to-Speech', 'Compliance and Security', 'Video Editing', 'Outline Builder']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=2, actual=1, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7031, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=2, actual=1, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7376, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=2, actual=1, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7264, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=2, actual=1, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.6990, threshold=0.7, passed=True
+[6/10] Generatng review for Easygenerator by Managing Director (Rating: 3)
+DEBUG: Assigned 3/13 features: ['Robust Customer Use Cases', 'Integration Capabilities', 'Outline Builder']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.6995, threshold=0.7, passed=True
+[7/10] Generatng review for Easygenerator by Managing Director (Rating: 5)
+DEBUG: Assigned 11/13 features: ['Compliance and Security', 'EasyAI', 'Collaboration Features', 'Cost-Effective Training Solutions', 'Text-to-Speech', 'Extensive Support', 'Instant Localization', 'Video Editing', 'Outline Builder', 'Robust Customer Use Cases', 'Interactive Content Creation']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7130, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.7585, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7954, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.7766, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.8064, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7130
+[8/10] Generatng review for Easygenerator by Instructional Designer (Rating: 3)
+DEBUG: Assigned 4/13 features: ['Cost-Effective Training Solutions', 'Instant Localization', 'Integration Capabilities', 'Extensive Support']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7952, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=3, actual=3, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.6570, threshold=0.7, passed=True
+[9/10] Generatng review for Easygenerator by Managing Director (Rating: 5)
+DEBUG: Assigned 3/13 features: ['Text-to-Speech', 'Cost-Effective Training Solutions', 'Robust Customer Use Cases']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7882, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.8063, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.7553, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.7651, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.7783, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7553
+[10/10] Generatng review for Easygenerator by Managing Director (Rating: 5)
+DEBUG: Assigned 1/13 features: ['Robust Customer Use Cases']
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 1/5, max=0.7935, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=4, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 2/5, max=0.8041, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 3/5, max=0.8628, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 4/5, max=0.8220, threshold=0.7, passed=False
+DEBUG: Reality check attempt 1/3 - Passed: True
+DEBUG: Parallel QA checks - Sentiment: attempt 1/3, predicted=5, actual=5, passed=True
+DEBUG: Parallel QA checks - Similarity: attempt 5/5, max=0.8842, threshold=0.7, passed=False
+DEBUG: Max similarity attempts reached. Using best review with similarity: 0.7935
+Done! Saved 10 reviews to data/output\reviews_gpt-4o-mini_20260104_021059.json
+
+--- Performance Summary for openai/gpt-4o-mini ---
+Success Rate: 100.0%
+Avg Generation Time: 18.86s
+Reviews/Minute: 3.2
+Total Time: 188.6s
+
+============================================================
+GENERATING QUALITY REPORTS
+============================================================
+
+Generating reports for openai/gpt-4o-mini...
+Report saved to: reports\quality_report_openai-gpt-4o-mini_20260104_021059.json
+Markdown version: reports\quality_report_openai-gpt-4o-mini_20260104_021059.md
+Report saved to: reports\comparison_report_openai-gpt-4o-mini_20260104_021100.json
+Markdown version: reports\comparison_report_openai-gpt-4o-mini_20260104_021100.md
+Report saved to: reports\model_performance_report_unknown_20260104_021100.json
+Markdown version: reports\model_performance_report_unknown_20260104_021100.md
+Report saved to: reports\summary_report_openai-gpt-4o-mini_20260104_021100.json
+Markdown version: reports\summary_report_openai-gpt-4o-mini_20260104_021100.md
+Reports saved for openai/gpt-4o-mini:
+  - quality: reports\quality_report_openai-gpt-4o-mini_20260104_021059.json
+  - comparison: reports\comparison_report_openai-gpt-4o-mini_20260104_021100.json
+  - performance: reports\model_performance_report_unknown_20260104_021100.json
+  - summary: reports\summary_report_openai-gpt-4o-mini_20260104_021100.json

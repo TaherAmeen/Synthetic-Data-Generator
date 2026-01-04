@@ -1,0 +1,81 @@
+{
+    "products": [
+        {
+            "name": "Easygenerator",
+            "type": "E-learning platform",
+            "description": "Easygenerator is a cloud-based e-learning platform that allows users to create and deliver engaging online courses."
+        }
+    ],
+    "personas": [
+        {
+            "role": "Instructional Designer",
+            "description": "Focuses on course creation efficiencies, feature depth, and learner engagement tools."
+        },
+        {
+            "role": "CEO",
+            "description": "Focuses on high-level business value, ROI, and scalability of the solution."
+        },
+        {
+            "role": "Managing Director",
+            "description": "Focuses on team management, oversight capabilities, and strategic alignment."
+        },
+        {
+            "role": "Trainer",
+            "description": "Focuses on ease of creating quizzes, tests, and training materials for colleagues and trainees."
+        },
+        {
+            "role": "L&D Manager",
+            "description": "Focuses on learning and development strategy, team training oversight, and content quality."
+        },
+        {
+            "role": "Corporate Trainer",
+            "description": "Focuses on onboarding, employee training scalability, and multi-department training needs."
+        },
+        {
+            "role": "Learning Specialist",
+            "description": "Focuses on rapid course development, content blocks, and collaborative features."
+        },
+        {
+            "role": "Product Trainer",
+            "description": "Focuses on product-specific training, interactive e-learning, and organized course management."
+        },
+        {
+            "role": "Technical Trainer",
+            "description": "Focuses on technical training delivery, video-based content, and software instruction."
+        },
+        {
+            "role": "Training Specialist",
+            "description": "Focuses on specialized training programs, assessment tools, and learner tracking."
+        },
+        {
+            "role": "Chief Compliance Officer",
+            "description": "Focuses on compliance training, audit trails, reporting, and regulatory requirements."
+        },
+        {
+            "role": "HR Manager",
+            "description": "Focuses on employee onboarding, HR training modules, and organizational learning needs."
+        },
+        {
+            "role": "Learning & Development Coordinator",
+            "description": "Focuses on holistic training delivery, SME collaboration, and content quality oversight."
+        }
+    ],
+    "rating_distribution": {
+        "1": 0.1,
+        "2": 0.1,
+        "3": 0.2,
+        "4": 0.3,
+        "5": 0.3
+    },
+    "models": [{
+        "provider": "openai",
+        "name": "gpt-4o-mini"
+    }],
+    "samples_number": 10,
+    "similarity_threshold": 0.7,
+    "options": {
+        "pros_and_cons": true,
+        "rating": true,
+        "use_research": true
+    }
+}

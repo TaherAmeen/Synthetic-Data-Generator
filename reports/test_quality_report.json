@@ -1,0 +1,82 @@
+{
+  "report_type": "quality_report",
+  "generated_at": "2026-01-04T01:51:30.353216",
+  "model": "test-model",
+  "total_reviews": 8,
+  "metrics": {
+    "text_quality": {
+      "length_stats": {
+        "mean": 133.625,
+        "std": 53.3430817913626,
+        "min": 64,
+        "max": 206,
+        "median": 138.5
+      },
+      "comment_length_stats": {
+        "mean": 105.25,
+        "std": 51.385187554391585,
+        "min": 35,
+        "max": 186,
+        "median": 110.0
+      },
+      "vocabulary_diversity": {
+        "type_token_ratio": 0.3502,
+        "unique_words": 387,
+        "total_words": 1105
+      },
+      "readability": {
+        "flesch_mean": 13.87,
+        "flesch_std": 3.86,
+        "flesch_min": 9.18,
+        "flesch_max": 19.57
+      }
+    },
+    "distributions": {
+      "rating": {
+        "distribution": {
+          "1": {
+            "count": 1,
+            "percentage": 12.5
+          },
+          "3": {
+            "count": 1,
+            "percentage": 12.5
+          },
+          "4": {
+            "count": 1,
+            "percentage": 12.5
+          },
+          "5": {
+            "count": 5,
+            "percentage": 62.5
+          }
+        },
+        "mean": 4.12,
+        "std": 1.36,
+        "median": 5.0
+      },
+      "persona": {
+        "distribution": {
+          "CEO": {
+            "count": 2,
+            "percentage": 25.0
+          },
+          "Instructional Designer": {
+            "count": 4,
+            "percentage": 50.0
+          },
+          "Managing Director": {
+            "count": 2,
+            "percentage": 25.0
+          }
+        }
+      }
+    },
+    "summary": {
+      "diversity_score": 0.5,
+      "avg_readability": 13.87,
+      "avg_review_length": 133.625,
+      "rating_variance": 1.36
+    }
+  }
+}
