@@ -12,7 +12,7 @@ A simple tool that generates synthetic product reviews using Large Language Mode
 - **REST API**: FastAPI-based API for integration with other services (though I personally used `app.py` to generate the results presented in this repo)
 - **Docker Support**: It'll work on your machine, too!
 
-## Challenge & Solution
+## Challenges & Solutions
 The goal was to generate various reviews that are diverse and non-repetitive, while keeping them relevant, factual, and non-hallucinated. If we rely on pure randomness, the result would be a bunch of irrelevant reviews written by someone who clearly never sued the target product. If we made a deterministic generator, the reviews will be very repetitive. We also have the problem of having the generated reviews look more like a commercial that an actual feedback. So these are the ideas and approaches I used to overcome these challenges:
 
 ### Factual real-world data (research)
